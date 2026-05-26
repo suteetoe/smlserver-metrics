@@ -1,0 +1,48 @@
+services:
+  prometheus:
+    image: prom/prometheus:v3.8.0
+    restart: always
+    ports:
+      - "9090:9090"
+    expose:
+      - 9090
+    container_name: prometheus
+    command:
+      - --web.enable-remote-write-receiver
+      - --config.file=/etc/prometheus/prometheus.yml
+    networks: ["sml_service_network"]
+  loki:
+    image: grafana/loki:3.6.3
+    container_name: loki
+    restart: always
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/config.yml
+    volumes:
+      - ./conf/loki-config.yml:/etc/loki/config.yml
+      - ./loki-data:/loki
+    networks: ["sml_service_network"]
+  grafana:
+    image: grafana/grafana:12.3
+    restart: always
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=sml
+      - GF_SERVER_ROOT_URL=http://192.168.2.213/grafana/
+      - GF_SERVER_SERVE_FROM_SUB_PATH=true
+    volumes:
+      - ./grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./dashboard:/var/lib/grafana/dashboards:ro
+    expose:
+      - 3000
+    labels:
+      - "traefik.http.routers.grafana.rule=(PathPrefix(`/grafana`))"
+    networks: ["sml_service_network"]
+    depends_on:
+      - prometheus
+      - loki    
+networks:
+  sml_service_network:
+    name: sml_service_network
+    external: true

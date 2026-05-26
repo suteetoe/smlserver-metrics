@@ -67,6 +67,17 @@ prometheus.scrape "postgres_scrape" {
   scrape_interval = "15s"
 }
 
+prometheus.scrape "traefik_scrape" {
+  targets = [
+    {
+      __address__ = "traefik:9091",
+      job         = "traefik",
+    },
+  ]
+  forward_to      = [prometheus.remote_write.local_prometheus.receiver]
+  scrape_interval = "15s"
+}
+
 // Configure a prometheus.remote_write component to send metrics to a Prometheus server.
 prometheus.remote_write "local_prometheus" {
   endpoint {

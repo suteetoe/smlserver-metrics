@@ -1,27 +1,4 @@
 services:
-  prometheus:
-    image: prom/prometheus:v3.8.0
-    restart: always
-    ports:
-      - "9090:9090"
-    expose:
-      - 9090
-    container_name: prometheus
-    command:
-      - --web.enable-remote-write-receiver
-      - --config.file=/etc/prometheus/prometheus.yml
-    networks: ["sml_service_network"]
-  loki:
-    image: grafana/loki:3.6.3
-    container_name: loki
-    restart: always
-    ports:
-      - "3100:3100"
-    command: -config.file=/etc/loki/config.yml
-    volumes:
-      - ./conf/loki-config.yml:/etc/loki/config.yml
-      - ./loki-data:/loki
-    networks: ["sml_service_network"]
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
@@ -67,27 +44,8 @@ services:
       - prometheus
       - cadvisor
       - node_exporter
+      - traefik
     networks: ["sml_service_network"]
-  grafana:
-    image: grafana/grafana:12.3
-    restart: always
-    container_name: grafana
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=sml
-      - GF_SERVER_ROOT_URL=http://192.168.2.213/grafana/
-      - GF_SERVER_SERVE_FROM_SUB_PATH=true
-    volumes:
-      - ./grafana-data:/var/lib/grafana
-      - ./grafana/provisioning:/etc/grafana/provisioning:ro
-      - ./dashboard:/var/lib/grafana/dashboards:ro
-    expose:
-      - 3000
-    labels:
-      - "traefik.http.routers.grafana.rule=(PathPrefix(`/grafana`))"
-    networks: ["sml_service_network"]
-    depends_on:
-      - prometheus
-      - loki
   postgresql:
     image: postgres:18.4
     container_name: sml_postgresql
@@ -127,6 +85,39 @@ services:
     labels:
       - "traefik.http.routers.smljavawebservice.rule=(PathPrefix(`/SMLJavaWebService`))"
     networks: ["sml_service_network"]
+  traefik:
+    image: traefik:v3.6
+    restart: always
+    container_name: traefik
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.watch"
+      - "--entrypoints.web.address=:80"
+      # - "--providers.docker.exposedbydefault=false"
+      - "--api.dashboard=true"
+      # - "--log.level=DEBUG"
+      # Enable Prometheus metrics endpoint
+      - "--entrypoints.metrics.address=:9091"
+      - "--metrics.prometheus=true"
+      - "--metrics.prometheus.entrypoint=metrics"
+    labels:
+      - "traefik.http.routers.api.rule=((PathPrefix(`/api`) || PathPrefix(`/dashboard`)))"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.http.routers.api.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.users=toe:$$apr1$$9dmswe8v$$k1RQ.WAI57gWWHD.l/.dV1,sml:$$apr1$$ia38r5sb$$8uxrh4fGN.OOFjdhB9FNW0"
+      # - "traefik.http.middlewares.auth.basicauth.removeheader=true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ports:
+      - 80:80
+      - 8080:8080
+      - 9091:9091
+    networks: ["sml_service_network"]
+
 networks:
   sml_service_network:
     name: sml_service_network
