@@ -37,7 +37,7 @@ prometheus.relabel "docker_containers" {
 prometheus.scrape "smljavawebservice_scrape" {
   targets    = [
     {
-      __address__ = "smljavawebservice-metric-smljavawebservice-1:8081",
+      __address__ = "sml_webservice:8081",
       job = "sml-java-webservice",
     },
   ]
