@@ -2,32 +2,18 @@
 // #### Metrics Configuration ####
 // ###############################
 
-// Host Cadvisor on the Docker socket to expose container metrics.
-prometheus.exporter.cadvisor "example" {
-    docker_only = true
+prometheus.scrape "docker_containers" {
+    targets = [{
+        __address__ = "cadvisor:8080",
+        job         = "integrations/docker",
+    }]
+
+    forward_to      = [prometheus.relabel.docker_containers.receiver]
+    scrape_interval = "15s"
 }
 
-prometheus.scrape "example" {
-    targets    = prometheus.exporter.cadvisor.example.targets
-    forward_to = [ prometheus.relabel.example.receiver ]
-    scrape_interval = "10s"
-}
-
-prometheus.relabel "example" {
-
-    forward_to = prometheus.remote_write.demo.receiver
-
-    // (ทางเลือก) ลบ label 'name' ทิ้งไปเพื่อไม่ให้ข้อมูลซ้ำซ้อน
-    //rule {
-    //  action = "labeldrop"
-    //  regex  = "name"
-    //}
-
-    // ดึง service name จาก docker compose file
-    //rule {
-    //  source_labels = ["__meta_docker_container_label_com_docker_compose_service"]
-    //  target_label  = "service"
-    //}
+prometheus.relabel "docker_containers" {
+    forward_to = [prometheus.remote_write.local_prometheus.receiver]
 
     rule {
         source_labels = ["name"]
@@ -55,7 +41,7 @@ prometheus.scrape "smljavawebservice_scrape" {
       job = "sml-java-webservice",
     },
   ]
-  forward_to = [prometheus.remote_write.demo.receiver] // ส่งต่อผลลัพธ์ไปที่ Remote Write
+  forward_to = [prometheus.remote_write.local_prometheus.receiver] // ส่งต่อผลลัพธ์ไปที่ Remote Write
   scrape_interval = "15s"
 }
 
@@ -66,12 +52,12 @@ prometheus.scrape "postgres_scrape" {
       job = "postgresql",
     },
   ]
-  forward_to = [prometheus.remote_write.demo.receiver] // ส่งต่อผลลัพธ์ไปที่ Remote Write
+  forward_to = [prometheus.remote_write.local_prometheus.receiver] // ส่งต่อผลลัพธ์ไปที่ Remote Write
   scrape_interval = "15s"
 }
 
 // Configure a prometheus.remote_write component to send metrics to a Prometheus server.
-prometheus.remote_write "demo" {
+prometheus.remote_write "local_prometheus" {
   endpoint {
     url = "http://prometheus:9090/api/v1/write"
   }
