@@ -1,0 +1,62 @@
+# config.yaml (JMX Exporter Configuration)
+startDelaySeconds: 0
+lowercaseOutputName: true
+lowercaseOutputLabelNames: true
+
+rules:
+  - pattern: 'java.lang<type=(Memory|GarbageCollector|Threading|ClassLoading|Runtime)>(.*):'
+    name: "jvm_$1_$2"
+  - pattern: 'java.lang<type=OperatingSystem><>(ProcessCpuLoad|SystemCpuLoad|CommittedVirtualMemorySize|FreePhysicalMemorySize|TotalPhysicalMemorySize|SystemLoadAverage|ProcessCpuTime|AvailableProcessors|TotalSwapSpaceSize|OpenFileDescriptorCount|FreeSwapSpaceSize):'
+    name: "jvm_os_$1"
+  - pattern: 'Catalina<type=Server><>serverInfo: (.+)'
+    name: "tomcat_serverinfo"
+    value: 1
+    labels:
+      serverInfo: "$1"
+    type: COUNTER
+  - pattern: 'com.zaxxer.hikari<name=(.*),type=Pool>:(\w+)'
+    name: "hikaricp_$2"
+    labels:
+      pool_name: "$1"
+#  - pattern: 'Catalina<type=GlobalRequestProcessor,name="(.*)"><>(requestCount|errorCount|bytesReceived|bytesSent|processingTime):'
+#    name: "tomcat_http_request_$2_total"
+#    labels:
+#      name: "$1"
+  - pattern: 'Catalina<type=GlobalRequestProcessor, name=\"(\w+-\w+)-(\d+)\"><>(\w+):'
+    name: tomcat_$3_total
+    labels:
+      port: "$2"
+      protocol: "$1"
+    help: Tomcat global $3
+    type: COUNTER
+  - pattern: 'Catalina<j2eeType=Servlet, WebModule=//([-a-zA-Z0-9+&@#/%?=~_|!:.,;]*[-a-zA-Z0-9+&@#/%=~_|]), name=([-a-zA-Z0-9+/$%~_-|!.]*), J2EEApplication=none, J2EEServer=none><>(requestCount|processingTime|errorCount):'
+    name: tomcat_servlet_$3_total
+    labels:
+      module: "$1"
+      servlet: "$2"
+    help: Tomcat servlet $3 total
+    type: COUNTER
+#  - pattern: 'Catalina<type=ThreadPool,name="(.*)"><>(currentThreadsBusy|currentThreadCount|maxThreads):'
+#    name: "tomcat_threadpool_$2"
+#    labels:
+#      name: "$1"
+  - pattern: 'Catalina<type=ThreadPool, name="(\w+-\w+)-(\d+)"><>(currentThreadCount|currentThreadsBusy|keepAliveCount|connectionCount|acceptCount|acceptorThreadCount|pollerThreadCount|maxThreads|minSpareThreads):'
+    name: tomcat_threadpool_$3
+    labels:
+      port: "$2"
+      protocol: "$1"
+    help: Tomcat threadpool $3
+    type: GAUGE
+#  - pattern: 'Catalina<type=Manager,context=(.*),host=(.*),path=(.*)><>(activeSessions):'
+#    name: "tomcat_manager_active_sessions"
+#    labels:
+#      context: "$1"
+#      host: "$2"
+#      path: "$3"
+  - pattern: 'Catalina<type=Manager, host=([-a-zA-Z0-9+&@#/%?=~_|!:.,;]*[-a-zA-Z0-9+&@#/%=~_|]), context=([-a-zA-Z0-9+/$%~_-|!.]*)><>(processingTime|sessionCounter|rejectedSessions|expiredSessions):'
+    name: tomcat_session_$3_total
+    labels:
+      context: "$2"
+      host: "$1"
+    help: Tomcat session $3 total
+    type: COUNTER

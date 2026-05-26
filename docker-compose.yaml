@@ -1,0 +1,106 @@
+services:
+  prometheus:
+    image: prom/prometheus:v3.8.0
+    restart: always
+    ports:
+      - "9090:9090"
+    expose:
+      - 9090
+    container_name: prometheus
+    command:
+      - --web.enable-remote-write-receiver
+      - --config.file=/etc/prometheus/prometheus.yml
+    networks: ["sml_service_network"]
+  loki:
+    image: grafana/loki:3.6.3
+    container_name: loki
+    restart: always
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/config.yml
+    volumes:
+      - ./conf/loki-config.yml:/etc/loki/config.yml
+      - ./loki-data:/loki
+    networks: ["sml_service_network"]
+  alloy:
+    image: grafana/alloy:v1.12.1
+    container_name: alloy
+    restart: always
+    ports:
+      - "12345:12345"
+    privileged: true
+    user: root
+    command: run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy
+    volumes:
+      - ./conf/config.alloy:/etc/alloy/config.alloy
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /proc:/rootproc:ro
+      - /sys:/sys:ro
+      - /:/rootfs:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+    depends_on:
+      - loki
+      - prometheus
+    networks: ["sml_service_network"]
+  grafana:
+    image: grafana/grafana:12.3
+    restart: always
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=sml
+    volumes:
+      - ./grafana-data:/var/lib/grafana
+    expose:
+      - 3000
+    labels:
+      - "traefik.http.routers.grafana.rule=(PathPrefix(`/grafana`))"
+      - "traefik.http.middlewares.grafana-stripprefix.stripprefix.prefixes=/grafana"
+      - "traefik.http.routers.grafana.middlewares=grafana-stripprefix"
+    networks: ["sml_service_network"]
+    depends_on:
+      - prometheus
+      - loki
+  postgresql:
+    image: postgres:18.4
+    container_name: sml_postgresql
+    restart: always
+    shm_size: 1g
+    environment:
+      POSTGRES_PASSWORD: sml
+    ports:
+       - "5432:5432"
+    volumes:
+      - ./postgresql:/var/lib/postgresql
+    networks: ["sml_service_network"]
+  postgres_exporter:
+    image: wrouesnel/postgres_exporter:latest
+    container_name: sml_postgres_exporter
+    restart: always
+    environment:
+      DATA_SOURCE_NAME: postgresql://postgres:sml@sml_postgresql:5432/postgres?sslmode=disable
+    ports:
+      - "9187:9187"
+    networks: ["sml_service_network"]
+    depends_on:
+      - postgresql
+  smljavawebservice:
+    image: ghcr.io/smlsoft/smljavawebservice:3.9.13
+    restart: always
+    container_name: sml_webservice
+    expose:
+      - 8080
+    volumes:
+      - ./tomcat_temp:/usr/local/tomcat/temp
+      - ./conf:/opt/monitoring
+    environment:
+        - "CATALINA_OPTS=-javaagent:/opt/monitoring/jmx_prometheus_javaagent-1.5.0.jar=8081:/opt/monitoring/jmx-config.yaml"
+    labels:
+      - "traefik.http.routers.smljavawebservice.rule=(PathPrefix(`/SMLJavaWebService`))"
+    networks: ["sml_service_network"]
+networks:
+  sml_service_network:
+    name: sml_service_network
+    external: true
