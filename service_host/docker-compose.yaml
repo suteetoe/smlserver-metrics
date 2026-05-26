@@ -40,8 +40,6 @@ services:
     devices:
       - /dev/kmsg
     depends_on:
-      - loki
-      - prometheus
       - cadvisor
       - node_exporter
       - traefik
