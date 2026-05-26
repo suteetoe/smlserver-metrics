@@ -12,6 +12,17 @@ prometheus.scrape "docker_containers" {
     scrape_interval = "15s"
 }
 
+prometheus.scrape "node_exporter" {
+  targets = [
+    {
+      __address__ = "node_exporter:9100",
+      job         = "node",
+    },
+  ]
+  forward_to      = [prometheus.remote_write.local_prometheus.receiver]
+  scrape_interval = "15s"
+}
+
 prometheus.relabel "docker_containers" {
     forward_to = [prometheus.remote_write.local_prometheus.receiver]
 
