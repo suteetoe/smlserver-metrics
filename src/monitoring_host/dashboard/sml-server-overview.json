@@ -47,7 +47,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
           "custom": {
             "hideFrom": {
@@ -127,7 +127,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
           "custom": {
             "hideFrom": {
@@ -2526,7 +2526,7 @@
   "timezone": "browser",
   "title": "SML Server Overview",
   "uid": "sml-server-overview",
-  "version": 4,
+  "version": 5,
   "weekStart": "",
   "description": "Operational overview for SML ERP host, Traefik traffic, SMLJavaWebService, PostgreSQL, and key container logs."
 }
