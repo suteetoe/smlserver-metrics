@@ -91,3 +91,11 @@ Force Recreate alloy containers
 ```
 docker compose up -d --force-recreate alloy
 ```
+
+
+## Autoheal
+
+```
+docker inspect --format='{{json .State.Health}}' sml_webservice
+docker logs autoheal --tail=100
+```
