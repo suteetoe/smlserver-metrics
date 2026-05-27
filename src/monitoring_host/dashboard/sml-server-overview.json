@@ -26,7 +26,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -42,7 +42,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -106,13 +106,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "100 * (1 - avg by (instance) (rate(node_cpu_seconds_total{job=\"node\",mode=\"idle\",instance=~\"$node_instance\"}[$__rate_interval])))",
+          "expr": "100 * (1 - avg by (instance) (rate(node_cpu_seconds_total{job=\"node\",mode=\"idle\",instance=~\".*\"}[5m])))",
           "legendFormat": "",
-          "range": true,
-          "instant": false,
+          "range": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -122,7 +122,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -186,13 +186,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "100 * (1 - (node_memory_MemAvailable_bytes{job=\"node\",instance=~\"$node_instance\"} / node_memory_MemTotal_bytes{job=\"node\",instance=~\"$node_instance\"}))",
+          "expr": "100 * (1 - (node_memory_MemAvailable_bytes{job=\"node\",instance=~\".*\"} / node_memory_MemTotal_bytes{job=\"node\",instance=~\".*\"}))",
           "legendFormat": "",
-          "range": true,
-          "instant": false,
+          "range": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -202,7 +202,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -272,13 +272,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "100 * (1 - (node_filesystem_avail_bytes{job=\"node\",instance=~\"$node_instance\",mountpoint=~\"$mountpoint\",fstype!~\"tmpfs|devtmpfs|overlay|squashfs|aufs\"} / node_filesystem_size_bytes{job=\"node\",instance=~\"$node_instance\",mountpoint=~\"$mountpoint\",fstype!~\"tmpfs|devtmpfs|overlay|squashfs|aufs\"}))",
+          "expr": "100 * (1 - (node_filesystem_avail_bytes{job=\"node\",instance=~\".*\",mountpoint=~\".*\",fstype!~\"tmpfs|devtmpfs|overlay|squashfs|aufs\"} / node_filesystem_size_bytes{job=\"node\",instance=~\".*\",mountpoint=~\".*\",fstype!~\"tmpfs|devtmpfs|overlay|squashfs|aufs\"}))",
           "legendFormat": "",
-          "range": true,
-          "instant": false,
+          "range": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -288,7 +288,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -377,10 +377,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "100 * (1 - avg by (instance) (rate(node_cpu_seconds_total{job=\"node\",mode=\"idle\",instance=~\"$node_instance\"}[$__rate_interval])))",
+          "expr": "100 * (1 - avg by (instance) (rate(node_cpu_seconds_total{job=\"node\",mode=\"idle\",instance=~\".*\"}[$__rate_interval])))",
           "legendFormat": "CPU {{instance}}",
           "range": true,
           "instant": false,
@@ -389,10 +389,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "100 * (1 - (node_memory_MemAvailable_bytes{job=\"node\",instance=~\"$node_instance\"} / node_memory_MemTotal_bytes{job=\"node\",instance=~\"$node_instance\"}))",
+          "expr": "100 * (1 - (node_memory_MemAvailable_bytes{job=\"node\",instance=~\".*\"} / node_memory_MemTotal_bytes{job=\"node\",instance=~\".*\"}))",
           "legendFormat": "RAM {{instance}}",
           "range": true,
           "instant": false,
@@ -406,7 +406,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -422,7 +422,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -487,13 +487,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(rate(traefik_entrypoint_requests_total{job=\"traefik\",entrypoint=~\"$traefik_entrypoint\"}[$__rate_interval]))",
+          "expr": "sum(rate(traefik_entrypoint_requests_total{job=\"traefik\",entrypoint=~\".*\"}[5m]))",
           "legendFormat": "",
-          "range": true,
-          "instant": false,
+          "range": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -503,7 +503,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -592,10 +592,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum by (code) (rate(traefik_entrypoint_requests_total{job=\"traefik\",entrypoint=~\"$traefik_entrypoint\",code=~\"200|404|500\"}[$__rate_interval]))",
+          "expr": "sum by (code) (rate(traefik_entrypoint_requests_total{job=\"traefik\",entrypoint=~\".*\",code=~\"200|404|500\"}[$__rate_interval]))",
           "legendFormat": "{{code}}",
           "range": true,
           "instant": false,
@@ -609,7 +609,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -625,7 +625,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -710,13 +710,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "min(up{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"})",
+          "expr": "min(up{job=\"sml-java-webservice\",instance=~\".*\"})",
           "legendFormat": "",
-          "range": true,
-          "instant": false,
+          "range": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -726,7 +726,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -786,10 +786,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "jvm_runtime_uptime{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"}",
+          "expr": "jvm_runtime_uptime{job=\"sml-java-webservice\",instance=~\".*\"}",
           "legendFormat": "Uptime",
           "range": false,
           "instant": true,
@@ -803,7 +803,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -860,13 +860,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "avg_over_time(jvm_os_processcpuload{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"}[1m]) * 100",
+          "expr": "avg_over_time(jvm_os_processcpuload{job=\"sml-java-webservice\",instance=~\".*\"}[1m]) * 100",
           "legendFormat": "CPU System Load (1m avg)",
-          "range": true,
-          "instant": false,
+          "range": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -876,7 +876,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -933,13 +933,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "avg_over_time(jvm_os_processcpuload{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"}[1m]) * 100",
+          "expr": "avg_over_time(jvm_os_processcpuload{job=\"sml-java-webservice\",instance=~\".*\"}[1m]) * 100",
           "legendFormat": "CPU Process Load (1m avg)",
-          "range": true,
-          "instant": false,
+          "range": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -949,7 +949,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1006,13 +1006,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "jvm_os_processcpuload{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"} * 100",
+          "expr": "jvm_os_processcpuload{job=\"sml-java-webservice\",instance=~\".*\"} * 100",
           "legendFormat": "CPU System load average",
-          "range": true,
-          "instant": false,
+          "range": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -1022,7 +1022,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1113,10 +1113,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "jvm_os_processcpuload{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"} * 100",
+          "expr": "jvm_os_processcpuload{job=\"sml-java-webservice\",instance=~\".*\"} * 100",
           "legendFormat": "JVM CPU load",
           "range": true,
           "instant": false,
@@ -1129,7 +1129,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1194,13 +1194,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "jvm_threading_threadcount{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"}",
+          "expr": "jvm_threading_threadcount{job=\"sml-java-webservice\",instance=~\".*\"}",
           "legendFormat": "current thread",
-          "range": true,
-          "instant": false,
+          "range": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -1210,7 +1210,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1299,7 +1299,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(rate(container_cpu_usage_seconds_total{job=\"integrations/docker\",container=\"sml_webservice\",image!=\"\"}[$__rate_interval])) * 100",
@@ -1311,7 +1311,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(container_memory_working_set_bytes{job=\"integrations/docker\",container=\"sml_webservice\",image!=\"\"})",
@@ -1327,7 +1327,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1416,10 +1416,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "jvm_threading_threadcount{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"}",
+          "expr": "jvm_threading_threadcount{job=\"sml-java-webservice\",instance=~\".*\"}",
           "legendFormat": "current",
           "range": true,
           "instant": false,
@@ -1428,10 +1428,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "jvm_threading_daemonthreadcount{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"}",
+          "expr": "jvm_threading_daemonthreadcount{job=\"sml-java-webservice\",instance=~\".*\"}",
           "legendFormat": "daemon",
           "range": true,
           "instant": false,
@@ -1440,10 +1440,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "jvm_threading_peakthreadcount{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"}",
+          "expr": "jvm_threading_peakthreadcount{job=\"sml-java-webservice\",instance=~\".*\"}",
           "legendFormat": "peak",
           "range": true,
           "instant": false,
@@ -1452,10 +1452,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "tomcat_threadpool_currentthreadcount{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"}",
+          "expr": "tomcat_threadpool_currentthreadcount{job=\"sml-java-webservice\",instance=~\".*\"}",
           "legendFormat": "tomcat pool {{protocol}}:{{port}}",
           "range": true,
           "instant": false,
@@ -1464,10 +1464,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "tomcat_threadpool_currentthreadsbusy{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"}",
+          "expr": "tomcat_threadpool_currentthreadsbusy{job=\"sml-java-webservice\",instance=~\".*\"}",
           "legendFormat": "busy {{protocol}}:{{port}}",
           "range": true,
           "instant": false,
@@ -1481,7 +1481,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -1497,7 +1497,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1562,13 +1562,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(container_memory_working_set_bytes{job=\"integrations/docker\",container=\"sml_postgresql\",image!=\"\"})",
           "legendFormat": "",
-          "range": true,
-          "instant": false,
+          "range": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -1578,7 +1578,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1643,13 +1643,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(pg_stat_activity_count{job=\"postgresql\",instance=~\"$postgres_instance\"})",
+          "expr": "sum(pg_stat_activity_count{job=\"postgresql\",instance=~\".*\"})",
           "legendFormat": "",
-          "range": true,
-          "instant": false,
+          "range": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -1659,7 +1659,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1748,10 +1748,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(pg_stat_activity_count{job=\"postgresql\",instance=~\"$postgres_instance\"})",
+          "expr": "sum(pg_stat_activity_count{job=\"postgresql\",instance=~\".*\"})",
           "legendFormat": "Total",
           "range": true,
           "instant": false,
@@ -1760,10 +1760,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(pg_stat_activity_count{job=\"postgresql\",instance=~\"$postgres_instance\",state=\"active\"})",
+          "expr": "sum(pg_stat_activity_count{job=\"postgresql\",instance=~\".*\",state=\"active\"})",
           "legendFormat": "Active",
           "range": true,
           "instant": false,
@@ -1772,10 +1772,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(pg_stat_activity_count{job=\"postgresql\",instance=~\"$postgres_instance\",state=~\"idle|idle in transaction|idle in transaction (aborted)\"})",
+          "expr": "sum(pg_stat_activity_count{job=\"postgresql\",instance=~\".*\",state=~\"idle|idle in transaction|idle in transaction (aborted)\"})",
           "legendFormat": "Idle",
           "range": true,
           "instant": false,
@@ -1788,7 +1788,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1877,10 +1877,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(rate(pg_stat_database_xact_commit{job=\"postgresql\",instance=~\"$postgres_instance\"}[$__rate_interval])) + sum(rate(pg_stat_database_xact_rollback{job=\"postgresql\",instance=~\"$postgres_instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pg_stat_database_xact_commit{job=\"postgresql\",instance=~\".*\"}[$__rate_interval])) + sum(rate(pg_stat_database_xact_rollback{job=\"postgresql\",instance=~\".*\"}[$__rate_interval]))",
           "legendFormat": "Transactions",
           "range": true,
           "instant": false,
@@ -1889,10 +1889,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(rate(pg_stat_database_xact_commit{job=\"postgresql\",instance=~\"$postgres_instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pg_stat_database_xact_commit{job=\"postgresql\",instance=~\".*\"}[$__rate_interval]))",
           "legendFormat": "Commits",
           "range": true,
           "instant": false,
@@ -1901,10 +1901,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(rate(pg_stat_database_xact_rollback{job=\"postgresql\",instance=~\"$postgres_instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pg_stat_database_xact_rollback{job=\"postgresql\",instance=~\".*\"}[$__rate_interval]))",
           "legendFormat": "Rollbacks",
           "range": true,
           "instant": false,
@@ -1918,7 +1918,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -2082,160 +2082,7 @@
     "logs"
   ],
   "templating": {
-    "list": [
-      {
-        "current": {
-          "selected": false,
-          "text": "Prometheus",
-          "value": "prometheus"
-        },
-        "hide": 0,
-        "includeAll": false,
-        "label": "Datasource",
-        "multi": false,
-        "name": "DS_PROMETHEUS",
-        "options": [],
-        "query": "prometheus",
-        "refresh": 1,
-        "regex": "",
-        "type": "datasource"
-      },
-      {
-        "allValue": ".*",
-        "current": {
-          "selected": true,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "label_values(up{job=\"node\"}, instance)",
-        "hide": 0,
-        "includeAll": true,
-        "label": "Server",
-        "multi": true,
-        "name": "node_instance",
-        "options": [],
-        "query": {
-          "query": "label_values(up{job=\"node\"}, instance)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "allValue": ".*",
-        "current": {
-          "selected": true,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "label_values(node_filesystem_size_bytes{job=\"node\",fstype!~\"tmpfs|devtmpfs|overlay|squashfs|aufs\"}, mountpoint)",
-        "hide": 0,
-        "includeAll": true,
-        "label": "Disk Mountpoint",
-        "multi": true,
-        "name": "mountpoint",
-        "options": [],
-        "query": {
-          "query": "label_values(node_filesystem_size_bytes{job=\"node\",fstype!~\"tmpfs|devtmpfs|overlay|squashfs|aufs\"}, mountpoint)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "allValue": ".*",
-        "current": {
-          "selected": true,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "label_values(traefik_entrypoint_requests_total{job=\"traefik\"}, entrypoint)",
-        "hide": 0,
-        "includeAll": true,
-        "label": "Traefik Entrypoint",
-        "multi": true,
-        "name": "traefik_entrypoint",
-        "options": [],
-        "query": {
-          "query": "label_values(traefik_entrypoint_requests_total{job=\"traefik\"}, entrypoint)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "allValue": ".*",
-        "current": {
-          "selected": true,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "label_values(up{job=\"sml-java-webservice\"}, instance)",
-        "hide": 0,
-        "includeAll": true,
-        "label": "Tomcat",
-        "multi": true,
-        "name": "tomcat_instance",
-        "options": [],
-        "query": {
-          "query": "label_values(up{job=\"sml-java-webservice\"}, instance)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "allValue": ".*",
-        "current": {
-          "selected": true,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "label_values(pg_up{job=\"postgresql\"}, instance)",
-        "hide": 0,
-        "includeAll": true,
-        "label": "PostgreSQL",
-        "multi": true,
-        "name": "postgres_instance",
-        "options": [],
-        "query": {
-          "query": "label_values(pg_up{job=\"postgresql\"}, instance)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      }
-    ]
+    "list": []
   },
   "time": {
     "from": "now-1h",
