@@ -84,7 +84,7 @@
       "gridPos": {
         "x": 0,
         "y": 1,
-        "w": 6,
+        "w": 4,
         "h": 5
       },
       "id": 2,
@@ -162,9 +162,9 @@
         "overrides": []
       },
       "gridPos": {
-        "x": 6,
+        "x": 4,
         "y": 1,
-        "w": 6,
+        "w": 4,
         "h": 5
       },
       "id": 3,
@@ -207,9 +207,10 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
           "custom": {
+            "displayMode": "basic",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -235,22 +236,26 @@
               }
             ]
           },
-          "unit": "percent"
+          "unit": "percent",
+          "min": 0,
+          "max": 100
         },
         "overrides": []
       },
       "gridPos": {
-        "x": 12,
+        "x": 8,
         "y": 1,
-        "w": 6,
+        "w": 4,
         "h": 5
       },
       "id": 4,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
+        "displayMode": "basic",
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -258,9 +263,9 @@
           "fields": "",
           "values": false
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
       },
       "pluginVersion": "12.1.0",
       "targets": [
@@ -278,88 +283,7 @@
         }
       ],
       "title": "Disk Used",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          },
-          "unit": "bytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "x": 18,
-        "y": 1,
-        "w": 6,
-        "h": 5
-      },
-      "id": 5,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "node_filesystem_avail_bytes{job=\"node\",instance=~\"$node_instance\",mountpoint=~\"$mountpoint\",fstype!~\"tmpfs|devtmpfs|overlay|squashfs|aufs\"}",
-          "legendFormat": "{{mountpoint}}",
-          "range": true,
-          "instant": false,
-          "refId": "A"
-        }
-      ],
-      "title": "Disk Free",
-      "type": "stat"
+      "type": "bargauge"
     },
     {
       "datasource": {
@@ -427,10 +351,10 @@
         "overrides": []
       },
       "gridPos": {
-        "x": 0,
-        "y": 6,
-        "w": 24,
-        "h": 8
+        "x": 12,
+        "y": 1,
+        "w": 12,
+        "h": 5
       },
       "id": 6,
       "options": {
@@ -473,21 +397,9 @@
           "range": true,
           "instant": false,
           "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "100 * (1 - (node_filesystem_avail_bytes{job=\"node\",instance=~\"$node_instance\",mountpoint=~\"$mountpoint\",fstype!~\"tmpfs|devtmpfs|overlay|squashfs|aufs\"} / node_filesystem_size_bytes{job=\"node\",instance=~\"$node_instance\",mountpoint=~\"$mountpoint\",fstype!~\"tmpfs|devtmpfs|overlay|squashfs|aufs\"}))",
-          "legendFormat": "Disk {{mountpoint}}",
-          "range": true,
-          "instant": false,
-          "refId": "C"
         }
       ],
-      "title": "Host CPU / RAM / Disk Usage",
+      "title": "Host CPU / RAM Usage",
       "type": "timeseries"
     },
     {
@@ -498,7 +410,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 14,
+        "y": 6,
         "w": 24,
         "h": 1
       },
@@ -549,7 +461,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 15,
+        "y": 7,
         "w": 6,
         "h": 5
       },
@@ -630,7 +542,7 @@
       },
       "gridPos": {
         "x": 6,
-        "y": 15,
+        "y": 7,
         "w": 6,
         "h": 5
       },
@@ -711,7 +623,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 15,
+        "y": 7,
         "w": 6,
         "h": 5
       },
@@ -792,7 +704,7 @@
       },
       "gridPos": {
         "x": 18,
-        "y": 15,
+        "y": 7,
         "w": 6,
         "h": 5
       },
@@ -898,7 +810,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 20,
+        "y": 12,
         "w": 16,
         "h": 8
       },
@@ -978,7 +890,7 @@
       },
       "gridPos": {
         "x": 16,
-        "y": 20,
+        "y": 12,
         "w": 8,
         "h": 8
       },
@@ -1029,7 +941,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 28,
+        "y": 20,
         "w": 24,
         "h": 1
       },
@@ -1080,7 +992,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 29,
+        "y": 21,
         "w": 6,
         "h": 5
       },
@@ -1161,7 +1073,7 @@
       },
       "gridPos": {
         "x": 6,
-        "y": 29,
+        "y": 21,
         "w": 6,
         "h": 5
       },
@@ -1242,7 +1154,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 29,
+        "y": 21,
         "w": 6,
         "h": 5
       },
@@ -1323,7 +1235,7 @@
       },
       "gridPos": {
         "x": 18,
-        "y": 29,
+        "y": 21,
         "w": 6,
         "h": 5
       },
@@ -1429,7 +1341,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 34,
+        "y": 26,
         "w": 12,
         "h": 8
       },
@@ -1546,7 +1458,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 34,
+        "y": 26,
         "w": 12,
         "h": 8
       },
@@ -1640,7 +1552,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 42,
+        "y": 34,
         "w": 24,
         "h": 1
       },
@@ -1691,7 +1603,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 43,
+        "y": 35,
         "w": 6,
         "h": 5
       },
@@ -1772,7 +1684,7 @@
       },
       "gridPos": {
         "x": 6,
-        "y": 43,
+        "y": 35,
         "w": 6,
         "h": 5
       },
@@ -1853,7 +1765,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 43,
+        "y": 35,
         "w": 6,
         "h": 5
       },
@@ -1934,7 +1846,7 @@
       },
       "gridPos": {
         "x": 18,
-        "y": 43,
+        "y": 35,
         "w": 6,
         "h": 5
       },
@@ -2040,7 +1952,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 48,
+        "y": 40,
         "w": 12,
         "h": 8
       },
@@ -2157,7 +2069,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 48,
+        "y": 40,
         "w": 12,
         "h": 8
       },
@@ -2203,7 +2115,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 56,
+        "y": 48,
         "w": 24,
         "h": 1
       },
@@ -2219,7 +2131,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 57,
+        "y": 49,
         "w": 12,
         "h": 8
       },
@@ -2254,7 +2166,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 57,
+        "y": 49,
         "w": 12,
         "h": 8
       },
@@ -2289,7 +2201,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 65,
+        "y": 57,
         "w": 12,
         "h": 8
       },
@@ -2324,7 +2236,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 65,
+        "y": 57,
         "w": 12,
         "h": 8
       },
@@ -2526,7 +2438,7 @@
   "timezone": "browser",
   "title": "SML Server Overview",
   "uid": "sml-server-overview",
-  "version": 5,
+  "version": 9,
   "weekStart": "",
   "description": "Operational overview for SML ERP host, Traefik traffic, SMLJavaWebService, PostgreSQL, and key container logs."
 }
