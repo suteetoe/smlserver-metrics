@@ -42,8 +42,8 @@ flowchart LR
 
 ## purpose 
 
-[ ] Setup monitoring host (Prometheus, Grafana, Loki)
-[ ] Setup metrics+log collector (Alloy)
+[x] Setup monitoring host (Prometheus, Grafana, Loki)
+[x] Setup metrics+log collector (Alloy)
 [ ] Config alloy for collecting Host metrics (CPU, Memory, Disk, Network)
 [ ] Config alloy for collecting Web Service metrics (JMX)
 [ ] Config alloy for collecting Database metrics (PostgreSQL)

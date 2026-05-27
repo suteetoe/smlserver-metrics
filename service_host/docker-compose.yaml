@@ -50,7 +50,7 @@ services:
     restart: always
     shm_size: 1g
     environment:
-      POSTGRES_PASSWORD: sml
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
        - "5432:5432"
     volumes:
@@ -61,7 +61,7 @@ services:
     container_name: sml_postgres_exporter
     restart: always
     environment:
-      DATA_SOURCE_NAME: postgresql://postgres:sml@sml_postgresql:5432/postgres?sslmode=disable
+      DATA_SOURCE_NAME: postgresql://${POSTGRES_USERNAME}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/postgres?sslmode=disable
     ports:
       - "9187:9187"
     networks: ["sml_service_network"]
