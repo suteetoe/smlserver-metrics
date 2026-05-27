@@ -44,7 +44,7 @@ services:
     networks: ["sml_service_network"]
     depends_on:
       - prometheus
-      - loki    
+      - loki
 networks:
   sml_service_network:
     name: sml_service_network
