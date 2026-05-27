@@ -1511,168 +1511,6 @@
               "viz": false
             }
           },
-          "decimals": 0,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "x": 0,
-        "y": 30,
-        "w": 6,
-        "h": 5
-      },
-      "id": 22,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "min(pg_up{job=\"postgresql\",instance=~\"$postgres_instance\"})",
-          "legendFormat": "",
-          "range": true,
-          "instant": false,
-          "refId": "A"
-        }
-      ],
-      "title": "PostgreSQL Up",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "x": 6,
-        "y": 30,
-        "w": 6,
-        "h": 5
-      },
-      "id": 23,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{job=\"integrations/docker\",container=\"sml_postgresql\",image!=\"\"}[$__rate_interval])) * 100",
-          "legendFormat": "",
-          "range": true,
-          "instant": false,
-          "refId": "A"
-        }
-      ],
-      "title": "PostgreSQL CPU",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
           "decimals": 2,
           "mappings": [],
           "thresholds": {
@@ -1697,10 +1535,10 @@
         "overrides": []
       },
       "gridPos": {
-        "x": 12,
+        "x": 20,
         "y": 30,
-        "w": 6,
-        "h": 5
+        "w": 2,
+        "h": 4
       },
       "id": 24,
       "options": {
@@ -1778,10 +1616,10 @@
         "overrides": []
       },
       "gridPos": {
-        "x": 18,
+        "x": 22,
         "y": 30,
-        "w": 6,
-        "h": 5
+        "w": 2,
+        "h": 4
       },
       "id": 25,
       "options": {
@@ -1836,124 +1674,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 12,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 2,
-            "pointSize": 4,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "x": 0,
-        "y": 35,
-        "w": 12,
-        "h": 8
-      },
-      "id": 26,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{job=\"integrations/docker\",container=\"sml_postgresql\",image!=\"\"}[$__rate_interval])) * 100",
-          "legendFormat": "CPU %",
-          "range": true,
-          "instant": false,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(container_memory_working_set_bytes{job=\"integrations/docker\",container=\"sml_postgresql\",image!=\"\"})",
-          "legendFormat": "Memory bytes",
-          "range": true,
-          "instant": false,
-          "refId": "B"
-        }
-      ],
-      "title": "PostgreSQL CPU / Memory",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 12,
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -2001,19 +1722,19 @@
         "overrides": []
       },
       "gridPos": {
-        "x": 12,
-        "y": 35,
-        "w": 12,
+        "x": 0,
+        "y": 30,
+        "w": 10,
         "h": 8
       },
-      "id": 27,
+      "id": 26,
       "options": {
         "legend": {
           "calcs": [
             "lastNotNull"
           ],
-          "displayMode": "table",
-          "placement": "bottom",
+          "displayMode": "list",
+          "placement": "right",
           "showLegend": true
         },
         "tooltip": {
@@ -2030,14 +1751,167 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum by (state) (pg_stat_activity_count{job=\"postgresql\",instance=~\"$postgres_instance\"})",
-          "legendFormat": "{{state}}",
+          "expr": "sum(pg_stat_activity_count{job=\"postgresql\",instance=~\"$postgres_instance\"})",
+          "legendFormat": "Total",
           "range": true,
           "instant": false,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(pg_stat_activity_count{job=\"postgresql\",instance=~\"$postgres_instance\",state=\"active\"})",
+          "legendFormat": "Active",
+          "range": true,
+          "instant": false,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(pg_stat_activity_count{job=\"postgresql\",instance=~\"$postgres_instance\",state=~\"idle|idle in transaction|idle in transaction (aborted)\"})",
+          "legendFormat": "Idle",
+          "range": true,
+          "instant": false,
+          "refId": "C"
         }
       ],
-      "title": "PostgreSQL Sessions by State",
+      "title": "Server sessions",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 4,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "x": 10,
+        "y": 30,
+        "w": 10,
+        "h": 8
+      },
+      "id": 27,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(pg_stat_database_xact_commit{job=\"postgresql\",instance=~\"$postgres_instance\"}[$__rate_interval])) + sum(rate(pg_stat_database_xact_rollback{job=\"postgresql\",instance=~\"$postgres_instance\"}[$__rate_interval]))",
+          "legendFormat": "Transactions",
+          "range": true,
+          "instant": false,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(pg_stat_database_xact_commit{job=\"postgresql\",instance=~\"$postgres_instance\"}[$__rate_interval]))",
+          "legendFormat": "Commits",
+          "range": true,
+          "instant": false,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(pg_stat_database_xact_rollback{job=\"postgresql\",instance=~\"$postgres_instance\"}[$__rate_interval]))",
+          "legendFormat": "Rollbacks",
+          "range": true,
+          "instant": false,
+          "refId": "C"
+        }
+      ],
+      "title": "Transactions per second",
       "type": "timeseries"
     },
     {
@@ -2048,7 +1922,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 43,
+        "y": 38,
         "w": 24,
         "h": 1
       },
@@ -2064,7 +1938,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 44,
+        "y": 39,
         "w": 12,
         "h": 8
       },
@@ -2099,7 +1973,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 44,
+        "y": 39,
         "w": 12,
         "h": 8
       },
@@ -2134,7 +2008,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 52,
+        "y": 47,
         "w": 12,
         "h": 8
       },
@@ -2169,7 +2043,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 52,
+        "y": 47,
         "w": 12,
         "h": 8
       },
