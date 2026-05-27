@@ -44,7 +44,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -108,7 +108,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -200,7 +200,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -305,7 +305,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -383,7 +383,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -462,7 +462,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -543,7 +543,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -653,7 +653,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -766,7 +766,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -848,7 +848,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -943,7 +943,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -1028,7 +1028,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -1112,7 +1112,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1230,7 +1230,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -1350,7 +1350,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1467,7 +1467,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1613,7 +1613,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1726,7 +1726,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1846,7 +1846,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -1968,7 +1968,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -2079,7 +2079,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2197,7 +2197,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2306,7 +2306,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2398,7 +2398,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "jvm_memory_pool_max_bytes{pool=~\"$mempool\",job=\"$job\",instance=\"$app$node\"}",
@@ -2409,7 +2409,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "jvm_memory_pool_used_bytes{pool=~\"$mempool\",job=\"$job\",instance=\"$app$node\"}",
@@ -2421,7 +2421,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "jvm_memory_pool_committed_bytes{pool=~\"$mempool\",job=\"$job\",instance=\"$app$node\"}",
@@ -2433,7 +2433,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -2466,7 +2466,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -2569,7 +2569,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -2658,7 +2658,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -2677,7 +2677,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -2782,7 +2782,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -2897,7 +2897,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -3026,7 +3026,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -3115,7 +3115,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "jvm_threads_current{job=\"$job\", instance=\"$app$node\"}",
@@ -3126,7 +3126,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "jvm_threads_daemon{job=\"$job\", instance=\"$app$node\"}",
@@ -3138,7 +3138,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "jvm_threads_deadlocked{job=\"$job\", instance=\"$app$node\"}",
@@ -3150,7 +3150,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "jvm_threads_deadlocked_monitor{job=\"$job\", instance=\"$app$node\"}",
@@ -3162,7 +3162,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "jvm_threads_peak{job=\"$job\", instance=\"$app$node\"}",
@@ -3174,7 +3174,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "jvm_threads_started_total{job=\"$job\", instance=\"$app$node\"}",
@@ -3190,7 +3190,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -3275,7 +3275,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "increase(jvm_threading_threadcount{job=\"$job\", instance=\"$app$node\"}[$__interval])",
@@ -3289,7 +3289,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "increase(jvm_threading_daemonthreadcount{job=\"$job\", instance=\"$app$node\"}[$__interval])",
@@ -3302,7 +3302,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "increase(jvm_threading_peakthreadcount{job=\"$job\", instance=\"$app$node\"}[$__interval])",
@@ -3316,7 +3316,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "increase(jvm_threading_totalstartedthreadcount{job=\"$job\", instance=\"$app$node\"}[$__interval])",
@@ -3334,7 +3334,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -3473,7 +3473,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -3558,7 +3558,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(jvm_threading_threadcount{job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -3572,7 +3572,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(jvm_threading_daemonthreadcount{job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -3585,7 +3585,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(jvm_threading_peakthreadcount{job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -3599,7 +3599,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(jvm_threading_totalstartedthreadcount{job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -3617,7 +3617,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -3705,7 +3705,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "increase(jvm_threads_current{job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -3716,7 +3716,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(jvm_threads_daemon{job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -3728,7 +3728,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(jvm_threads_deadlocked{job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -3740,7 +3740,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(jvm_threads_deadlocked_monitor{job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -3752,7 +3752,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(jvm_threads_peak{job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -3764,7 +3764,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(jvm_threads_started_total{job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -3793,7 +3793,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -3905,7 +3905,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -3996,7 +3996,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "jvm_classes_currently_loaded {job=\"$job\", instance=\"$app$node\"}",
@@ -4011,7 +4011,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "jvm_classes_loaded_total{job=\"$job\", instance=\"$app$node\"}",
@@ -4031,7 +4031,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -4143,7 +4143,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -4234,7 +4234,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "increase(jvm_classes_currently_loaded {job=\"$job\", instance=\"$app$node\"}[$__interval])",
@@ -4249,7 +4249,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "increase(jvm_classes_loaded_total{job=\"$job\", instance=\"$app$node\"}[$__interval])",
@@ -4269,7 +4269,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -4359,7 +4359,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(jvm_classloading_loadedclasscount{job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -4372,7 +4372,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(jvm_classloading_unloadedclasscount{job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -4389,7 +4389,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -4480,7 +4480,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(jvm_classes_currently_loaded {job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -4495,7 +4495,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(jvm_classes_loaded_total{job=\"$job\", instance=\"$app$node\"}[$__rate_interval])",
@@ -4530,7 +4530,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "bfn7m68f58ruof"
+          "uid": "prometheus"
         },
         "definition": "label_values(jvm_runtime_info, job)",
         "includeAll": false,
@@ -4552,7 +4552,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "bfn7m68f58ruof"
+          "uid": "prometheus"
         },
         "definition": "label_values(up{job=\"$job\"}, instance)",
         "includeAll": false,
@@ -4574,7 +4574,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "bfn7m68f58ruof"
+          "uid": "prometheus"
         },
         "definition": "label_values(up{job=\"$job\"}, instance)",
         "includeAll": false,
@@ -4598,7 +4598,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "bfn7m68f58ruof"
+          "uid": "prometheus"
         },
         "definition": "label_values(jvm_memory_used_bytes{job=\"$job\", instance=\"$app$node\"}, area)",
         "hide": 2,
@@ -4623,7 +4623,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "bfn7m68f58ruof"
+          "uid": "prometheus"
         },
         "definition": "label_values(jvm_memory_pool_max_bytes{job=\"$job\", instance=\"$app$node\"}, pool)",
         "hide": 2,

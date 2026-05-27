@@ -37,7 +37,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -98,7 +98,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -117,7 +117,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -183,7 +183,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -202,7 +202,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -291,7 +291,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -323,7 +323,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -412,7 +412,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "rate(traefik_entrypoint_requests_total{entrypoint=~\"$entrypoint\",code=\"200\"}[5m])",
@@ -429,7 +429,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -518,7 +518,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "rate(traefik_entrypoint_requests_total{instance=\"$service\",entrypoint=~\"$entrypoint\",code!=\"200\"}[5m])",
@@ -535,7 +535,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -595,7 +595,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "sum(rate(traefik_service_requests_total[5m])) by (service) ",
@@ -612,7 +612,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "bfn7m68f58ruof"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -672,7 +672,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "bfn7m68f58ruof"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "sum(rate(traefik_entrypoint_requests_total{entrypoint =~ \"$entrypoint\"}[5m])) by (entrypoint) ",
@@ -701,7 +701,7 @@
           "text": "traefik:9091",
           "value": "traefik:9091"
         },
-        "datasource": "bfn7m68f58ruof",
+        "datasource": "prometheus",
         "definition": "label_values(instance)",
         "includeAll": false,
         "name": "service",
@@ -724,7 +724,7 @@
             "$__all"
           ]
         },
-        "datasource": "bfn7m68f58ruof",
+        "datasource": "prometheus",
         "definition": "",
         "includeAll": true,
         "multi": true,

@@ -62,19 +62,26 @@ flowchart LR
 ```
 mkdir grafana-data
 chown 472:472 grafana-data
+
+mkdir loki-data
+chown -R 10001:10001 loki-data
+
+mkdir prometheus-data
+chown -R 65534:65534 prometheus-data
+
 ```
 3. Start the containers
 ```
 docker-compose up -d
 ```
-4. Access Grafana at http://localhost:3000
-5. Add Prometheus as a data source
-6. Import the dashboard from https:/na.com/grafana/dashboards/11376/grafa
+4. Access Grafana at http://host.to/grafana
 
 ## Metrics
 
 JMX - http://192.168.2.213:8081/metrics
 PostgreSQL - http://192.168.2.213:9187/metrics
+Traefik - http://192.168.2.213:9091/metrics
+
 Prometheus - http://192.168.2.213:9090/metrics
 
 ## Grafana
