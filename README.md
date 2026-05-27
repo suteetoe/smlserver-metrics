@@ -43,16 +43,20 @@ flowchart LR
 ## purpose 
 
 [x] Setup monitoring host (Prometheus, Grafana, Loki)
+[x] Add persistent storage for Prometheus metrics
+[x] Add persistent storage for Loki logs
 [x] Setup metrics+log collector (Alloy)
-[ ] Config alloy for collecting Host metrics (CPU, Memory, Disk, Network)
-[ ] Config alloy for collecting Web Service metrics (JMX)
-[ ] Config alloy for collecting Database metrics (PostgreSQL)
-[ ] Config alloy for collecting traffic metrics (Traefik)
-[ ] Create a dashboard for monitoring smlerp system (Host, Web Service, Database, traffic)
+[x] Config alloy for collecting Host metrics (CPU, Memory, Disk, Network)
+[x] Config alloy for collecting Web Service metrics (JMX)
+[x] Config alloy for collecting Database metrics (PostgreSQL)
+[x] Config alloy for collecting traffic metrics (Traefik)
+[x] Create dashboards for monitoring smlerp system (Host, Web Service, Database, traffic)
+[x] Logging pipeline (Alloy -> Loki)
+[ ] Provision Loki datasource in Grafana
+[ ] Add log panels to Grafana dashboard
 [ ] Alert when web service is down
 [ ] Alert when database is down
 [ ] Alert when memory threshold more than 80 percent
-[ ] Logging 
 
 
 ## Installation
