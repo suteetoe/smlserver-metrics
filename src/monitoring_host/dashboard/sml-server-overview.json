@@ -463,7 +463,7 @@
         "x": 0,
         "y": 7,
         "w": 6,
-        "h": 5
+        "h": 8
       },
       "id": 8,
       "options": {
@@ -498,249 +498,6 @@
         }
       ],
       "title": "Requests / sec",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "decimals": 0,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "x": 6,
-        "y": 7,
-        "w": 6,
-        "h": 5
-      },
-      "id": 9,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(increase(traefik_entrypoint_requests_total{job=\"traefik\",entrypoint=~\"$traefik_entrypoint\",code=\"200\"}[$__range]))",
-          "legendFormat": "",
-          "range": true,
-          "instant": false,
-          "refId": "A"
-        }
-      ],
-      "title": "HTTP 200",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "decimals": 0,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "x": 12,
-        "y": 7,
-        "w": 6,
-        "h": 5
-      },
-      "id": 10,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(increase(traefik_entrypoint_requests_total{job=\"traefik\",entrypoint=~\"$traefik_entrypoint\",code=\"404\"}[$__range]))",
-          "legendFormat": "",
-          "range": true,
-          "instant": false,
-          "refId": "A"
-        }
-      ],
-      "title": "HTTP 404",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "decimals": 0,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "x": 18,
-        "y": 7,
-        "w": 6,
-        "h": 5
-      },
-      "id": 11,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(increase(traefik_entrypoint_requests_total{job=\"traefik\",entrypoint=~\"$traefik_entrypoint\",code=\"500\"}[$__range]))",
-          "legendFormat": "",
-          "range": true,
-          "instant": false,
-          "refId": "A"
-        }
-      ],
-      "title": "HTTP 500",
       "type": "stat"
     },
     {
@@ -809,9 +566,9 @@
         "overrides": []
       },
       "gridPos": {
-        "x": 0,
-        "y": 12,
-        "w": 16,
+        "x": 6,
+        "y": 7,
+        "w": 18,
         "h": 8
       },
       "id": 12,
@@ -849,91 +606,6 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "decimals": 0,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "x": 16,
-        "y": 12,
-        "w": 8,
-        "h": 8
-      },
-      "id": 13,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum by (entrypoint, code) (increase(traefik_entrypoint_requests_total{job=\"traefik\",entrypoint=~\"$traefik_entrypoint\"}[$__range]))",
-          "legendFormat": "{{entrypoint}} {{code}}",
-          "range": false,
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Traefik HTTP Status Counters",
-      "transformations": [
-        {
-          "id": "labelsToFields",
-          "options": {
-            "mode": "columns"
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
@@ -941,7 +613,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 20,
+        "y": 15,
         "w": 24,
         "h": 1
       },
@@ -992,7 +664,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 21,
+        "y": 16,
         "w": 6,
         "h": 5
       },
@@ -1073,7 +745,7 @@
       },
       "gridPos": {
         "x": 6,
-        "y": 21,
+        "y": 16,
         "w": 6,
         "h": 5
       },
@@ -1154,7 +826,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 21,
+        "y": 16,
         "w": 6,
         "h": 5
       },
@@ -1235,7 +907,7 @@
       },
       "gridPos": {
         "x": 18,
-        "y": 21,
+        "y": 16,
         "w": 6,
         "h": 5
       },
@@ -1341,7 +1013,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 26,
+        "y": 21,
         "w": 12,
         "h": 8
       },
@@ -1458,7 +1130,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 26,
+        "y": 21,
         "w": 12,
         "h": 8
       },
@@ -1552,7 +1224,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 34,
+        "y": 29,
         "w": 24,
         "h": 1
       },
@@ -1603,7 +1275,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 35,
+        "y": 30,
         "w": 6,
         "h": 5
       },
@@ -1684,7 +1356,7 @@
       },
       "gridPos": {
         "x": 6,
-        "y": 35,
+        "y": 30,
         "w": 6,
         "h": 5
       },
@@ -1765,7 +1437,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 35,
+        "y": 30,
         "w": 6,
         "h": 5
       },
@@ -1846,7 +1518,7 @@
       },
       "gridPos": {
         "x": 18,
-        "y": 35,
+        "y": 30,
         "w": 6,
         "h": 5
       },
@@ -1952,7 +1624,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 40,
+        "y": 35,
         "w": 12,
         "h": 8
       },
@@ -2069,7 +1741,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 40,
+        "y": 35,
         "w": 12,
         "h": 8
       },
@@ -2115,7 +1787,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 48,
+        "y": 43,
         "w": 24,
         "h": 1
       },
@@ -2131,7 +1803,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 49,
+        "y": 44,
         "w": 12,
         "h": 8
       },
@@ -2166,7 +1838,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 49,
+        "y": 44,
         "w": 12,
         "h": 8
       },
@@ -2201,7 +1873,7 @@
       },
       "gridPos": {
         "x": 0,
-        "y": 57,
+        "y": 52,
         "w": 12,
         "h": 8
       },
@@ -2236,7 +1908,7 @@
       },
       "gridPos": {
         "x": 12,
-        "y": 57,
+        "y": 52,
         "w": 12,
         "h": 8
       },
@@ -2438,7 +2110,7 @@
   "timezone": "browser",
   "title": "SML Server Overview",
   "uid": "sml-server-overview",
-  "version": 9,
+  "version": 11,
   "weekStart": "",
   "description": "Operational overview for SML ERP host, Traefik traffic, SMLJavaWebService, PostgreSQL, and key container logs."
 }
