@@ -11,6 +11,7 @@ services:
       - --web.enable-remote-write-receiver
       - --config.file=/etc/prometheus/prometheus.yml
       - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=14d
     volumes:
       - ./prometheus-data:/prometheus
     networks: ["sml_service_network"]
