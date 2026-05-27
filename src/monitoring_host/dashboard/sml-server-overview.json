@@ -630,7 +630,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
           "custom": {
             "hideFrom": {
@@ -640,21 +640,41 @@
             }
           },
           "decimals": 0,
-          "mappings": [],
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {
+                  "text": "Down",
+                  "color": "red"
+                },
+                "1": {
+                  "text": "Up",
+                  "color": "green"
+                }
+              }
+            },
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "Down",
+                  "color": "red"
+                }
+              }
+            }
+          ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "red",
                 "value": null
               },
               {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 90
+                "color": "green",
+                "value": 1
               }
             ]
           },
@@ -665,14 +685,14 @@
       "gridPos": {
         "x": 0,
         "y": 16,
-        "w": 6,
-        "h": 5
+        "w": 2,
+        "h": 6
       },
       "id": 15,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -682,7 +702,7 @@
           "values": false
         },
         "showPercentChange": false,
-        "textMode": "auto",
+        "textMode": "value",
         "wideLayout": true
       },
       "pluginVersion": "12.1.0",
@@ -711,17 +731,89 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
+          "decimals": 0,
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A",
+                  "color": "red"
+                }
+              }
             }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "x": 2,
+        "y": 16,
+        "w": 2,
+        "h": 6
+      },
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "jvm_runtime_uptime{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"}",
+          "legendFormat": "Uptime",
+          "range": false,
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "title": "WebService Uptime",
+      "type": "stat",
+      "id": 34
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
           },
           "decimals": 2,
           "mappings": [],
+          "min": 0,
+          "max": 100,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -744,16 +836,13 @@
         "overrides": []
       },
       "gridPos": {
-        "x": 6,
-        "y": 16,
-        "w": 6,
-        "h": 5
+        "x": 4,
+        "y": 22,
+        "w": 2,
+        "h": 6
       },
-      "id": 16,
+      "id": 37,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -762,9 +851,9 @@
           "fields": "",
           "values": false
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
       "pluginVersion": "12.1.0",
       "targets": [
@@ -774,15 +863,15 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{job=\"integrations/docker\",container=\"sml_webservice\",image!=\"\"}[$__rate_interval])) * 100",
-          "legendFormat": "",
+          "expr": "avg_over_time(jvm_os_processcpuload{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"}[1m]) * 100",
+          "legendFormat": "CPU System Load (1m avg)",
           "range": true,
           "instant": false,
           "refId": "A"
         }
       ],
-      "title": "WebService CPU",
-      "type": "stat"
+      "title": "CPU System Load (1m avg)",
+      "type": "gauge"
     },
     {
       "datasource": {
@@ -792,17 +881,12 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
+            "mode": "thresholds"
           },
           "decimals": 2,
           "mappings": [],
+          "min": 0,
+          "max": 100,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -820,21 +904,18 @@
               }
             ]
           },
-          "unit": "bytes"
+          "unit": "percent"
         },
         "overrides": []
       },
       "gridPos": {
-        "x": 12,
-        "y": 16,
-        "w": 6,
-        "h": 5
+        "x": 2,
+        "y": 22,
+        "w": 2,
+        "h": 6
       },
-      "id": 17,
+      "id": 36,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -843,9 +924,9 @@
           "fields": "",
           "values": false
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
       "pluginVersion": "12.1.0",
       "targets": [
@@ -855,15 +936,195 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(container_memory_working_set_bytes{job=\"integrations/docker\",container=\"sml_webservice\",image!=\"\"})",
-          "legendFormat": "",
+          "expr": "avg_over_time(jvm_os_processcpuload{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"}[1m]) * 100",
+          "legendFormat": "CPU Process Load (1m avg)",
           "range": true,
           "instant": false,
           "refId": "A"
         }
       ],
-      "title": "WebService Memory",
-      "type": "stat"
+      "title": "CPU Process Load (1m avg)",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 22,
+        "w": 2,
+        "h": 6
+      },
+      "id": 35,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "jvm_os_processcpuload{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"} * 100",
+          "legendFormat": "CPU System load average",
+          "range": true,
+          "instant": false,
+          "refId": "A"
+        }
+      ],
+      "title": "CPU System load average",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 12,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 4,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 2,
+          "mappings": [],
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "x": 15,
+        "y": 16,
+        "w": 9,
+        "h": 6
+      },
+      "id": 33,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "jvm_os_processcpuload{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"} * 100",
+          "legendFormat": "JVM CPU load",
+          "range": true,
+          "instant": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Web Service CPU Load",
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -906,10 +1167,10 @@
         "overrides": []
       },
       "gridPos": {
-        "x": 18,
+        "x": 4,
         "y": 16,
-        "w": 6,
-        "h": 5
+        "w": 2,
+        "h": 6
       },
       "id": 18,
       "options": {
@@ -936,8 +1197,8 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "max(jvm_threading_threadcount{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"})",
-          "legendFormat": "",
+          "expr": "jvm_threading_threadcount{job=\"sml-java-webservice\",instance=~\"$tomcat_instance\"}",
+          "legendFormat": "current thread",
           "range": true,
           "instant": false,
           "refId": "A"
@@ -1012,10 +1273,10 @@
         "overrides": []
       },
       "gridPos": {
-        "x": 0,
-        "y": 21,
-        "w": 12,
-        "h": 8
+        "x": 15,
+        "y": 22,
+        "w": 9,
+        "h": 6
       },
       "id": 19,
       "options": {
@@ -1129,10 +1390,10 @@
         "overrides": []
       },
       "gridPos": {
-        "x": 12,
-        "y": 21,
-        "w": 12,
-        "h": 8
+        "x": 6,
+        "y": 16,
+        "w": 9,
+        "h": 12
       },
       "id": 20,
       "options": {
@@ -2110,7 +2371,7 @@
   "timezone": "browser",
   "title": "SML Server Overview",
   "uid": "sml-server-overview",
-  "version": 11,
+  "version": 21,
   "weekStart": "",
   "description": "Operational overview for SML ERP host, Traefik traffic, SMLJavaWebService, PostgreSQL, and key container logs."
 }
